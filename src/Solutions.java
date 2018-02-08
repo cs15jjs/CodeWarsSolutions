@@ -1,9 +1,8 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
 public class Solutions {
 
+	//count the amount of error strings
+	//error strings are [n - z]
+	//return or display count of erroneous strings
 	public static String printerError(String s) 
 	{
 		int count = 0;
@@ -57,7 +56,10 @@ public class Solutions {
 		returnString = returnString.substring(0, returnString.length() - 1);
 		return returnString;
 	}
-
+	//cut string in to sz size chunks
+	//if sum of the cube its contents is divisible by 2 then reverse chunk
+	//else rotate digits in the chunk one to the left 
+	//return appended chunks as a string
 	public static String revRot(String strng, Integer sz) 
 	{
 		if (sz <= 0 || sz == null)
@@ -121,34 +123,8 @@ public class Solutions {
 
 		return returnString;
 	}
-
-	public static int duplicatesCount(String text) 
-	{
-		String newText = text.toLowerCase();
-		Map<Character,Integer> map = new HashMap<Character,Integer>();
-		char[] carray = newText.toCharArray();
-		for (char c : carray)
-		{
-			if (map.containsKey(c))
-			{
-				map.put(c, map.get(c) +1);
-			}
-			else
-			{
-				map.put(c, 1);
-			}
-		}
-		Set <Character> setChar = map.keySet();
-		int returnC = 0;
-		for (Character c : setChar)
-		{
-			if (map.get(c) > 1)
-			{
-				returnC++;
-			}
-		}
-		return returnC;
-	}
+	//return count of DISTINCT case-insensitive alphabetic characters in the string input
+	//aabbc would equal 2, a and b have duplicates
 	public static int duplicateCount(String nText)
 	{
 		String text = nText.toLowerCase();
@@ -163,6 +139,47 @@ public class Solutions {
 			}
 		}
 		return cnt;
+	}
+	//which repeats the given string string exactly n times.
+	public static String repeatStr(final int repeat, final String string) 
+	{
+		String print = "";
+		for (int i = 0; i < repeat; i++)
+		{
+			print = print + string;
+		}
+
+		return print;
+	}
+	//create amount of character in the string by the index + 1 of that character
+	public static String accum(String s) 
+	{
+		String[] returnArray = s.split("");
+		String returnString = "";
+		for (int i = 0; i < returnArray.length; i++)
+		{
+			if (i == 0)
+			{
+				String f = Character.toString(s.charAt(i));
+				returnArray[i] = f.toUpperCase();
+				returnString = returnString + returnArray[i] + "-";
+			}
+			else 
+			{
+				String f = returnArray[i].toUpperCase();;
+				for (int j = 0; j < i; j++)
+				{
+					String h = Character.toString(s.charAt(i));
+					String b = h.toLowerCase();	
+					f = f + b;
+				}
+				returnArray[i] = f;
+				returnString = returnString + returnArray[i] + "-";
+			}
+		}
+
+		returnString = returnString.substring(0, returnString.length() - 1);
+		return returnString;
 	}
 
 	public static void main(String[] args) {
