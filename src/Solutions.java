@@ -26,36 +26,6 @@ public class Solutions {
 		}
 		return result;
 	}
-
-	public static String duplicate(String s)
-	{
-		String[] returnArray = s.split("");
-		String returnString = "";
-		for (int i = 0; i < returnArray.length; i++)
-		{
-			if (i == 0)
-			{
-				String f = Character.toString(s.charAt(i));
-				returnArray[i] = f.toUpperCase();
-				returnString = returnString + returnArray[i] + "-";
-			}
-			else 
-			{
-				String f = returnArray[i].toUpperCase();;
-				for (int j = 0; j < i; j++)
-				{
-					String h = Character.toString(s.charAt(i));
-					String b = h.toLowerCase();	
-					f = f + b;
-				}
-				returnArray[i] = f;
-				returnString = returnString + returnArray[i] + "-";
-			}
-		}
-
-		returnString = returnString.substring(0, returnString.length() - 1);
-		return returnString;
-	}
 	//cut string in to sz size chunks
 	//if sum of the cube its contents is divisible by 2 then reverse chunk
 	//else rotate digits in the chunk one to the left 
